@@ -189,11 +189,10 @@ searchInput.addEventListener('keyup', ()=>{
 
 // เล่นไฟล์เสียง
 function playAudio(file){
-  const audio = new Audio("audio/" + file);
-  audio.play().catch(err=>{
-    console.warn("ไม่มีไฟล์เสียง: " + file);
-  });
+  const audio = new Audio(file); // ไฟล์อยู่ในโฟลเดอร์เดียวกับ HTML
+  audio.play();
 }
+
 </script>
 
 </body>
