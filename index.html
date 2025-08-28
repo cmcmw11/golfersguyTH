@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Golf Thai Phrase Card Pro</title>
+<title>Golf Thai Phrase Card</title>
 <style>
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,7 +55,6 @@
     gap:5px;
   }
   .category-buttons button.active { background:#004d40; }
-  .category-buttons button i { font-style:normal; }
   #searchInput {
     width:100%;
     padding:10px;
@@ -117,100 +116,84 @@
 </div>
 
 <script>
-  const phrases = [
+const phrases = [
   // Clubhouse
-  {english:"How much for 9 or 18 holes?", thai:"เล่น 9 หลุม หรือ 18 หลุม ราคาเท่าไหร่ครับ?", phonetic:"Len gao lum / sip-paet lum ra-ka tao-rai krap/ka", category:"clubhouse"},
-  {english:"I want a golf car", thai:"ขอเช่ารถกอล์ฟครับ", phonetic:"Kor chao rot golf krap/ka", category:"clubhouse"},
-  {english:"How much does that cost?", thai:"ราคาเท่าไหร่ครับ?", phonetic:"Ra-ka tao-rai krap/ka?", category:"clubhouse"},
-  {english:"Can I book a caddy, please?", thai:"จองแคดดี้ได้ไหมครับ", phonetic:"Jong caddy dai-mai krap/ka?", category:"clubhouse"},
+  {english:"How much for 9 or 18 holes?", thai:"เล่น 9 หลุม หรือ 18 หลุม ราคาเท่าไหร่ครับ?", phonetic:"Len gao lum / sip-paet lum ra-ka tao-rai krap/ka", category:"clubhouse", audio:"ch1.mp3"},
+  {english:"I want a golf car", thai:"ขอเช่ารถกอล์ฟครับ", phonetic:"Kor chao rot golf krap/ka", category:"clubhouse", audio:"ch2.mp3"},
+  {english:"How much does that cost?", thai:"ราคาเท่าไหร่ครับ?", phonetic:"Ra-ka tao-rai krap/ka?", category:"clubhouse", audio:"ch3.mp3"},
+  {english:"Can I book a caddy, please?", thai:"จองแคดดี้ได้ไหมครับ", phonetic:"Jong caddy dai-mai krap/ka?", category:"clubhouse", audio:"ch4.mp3"},
 
-  // Social Phrases
-  {english:"Hello, my name is [name]", thai:"สวัสดีครับ ฉันชื่อ...", phonetic:"Sawatdee krap/ka. Pom/chan chue...", category:"social"},
-  {english:"What is your name?", thai:"คุณชื่ออะไรครับ?", phonetic:"Khun chue a-rai krap/ka?", category:"social"},
-  {english:"How are you?", thai:"สบายดีไหมครับ?", phonetic:"Sabai dee mai krap/ka?", category:"social"},
-  {english:"Do you have children?", thai:"มีลูกไหมครับ?", phonetic:"Mee look mai krap/ka?", category:"social"},
-  {english:"Do you live close to the golf field?", thai:"บ้านอยู่ใกล้สนามกอล์ฟไหมครับ?", phonetic:"Baan yoo glai sanam golf mai krap/ka?", category:"social"},
-  {english:"Do you have a motorcycle or car?", thai:"มีมอเตอร์ไซค์หรือรถยนต์ไหมครับ?", phonetic:"Mee motor-sai rue rot-yon mai krap/ka?", category:"social"},
-  {english:"Do you have other jobs?", thai:"มีงานอื่นอีกไหมครับ?", phonetic:"Mee ngan eek mai krap/ka?", category:"social"},
-  {english:"I really like this golf course", thai:"ชอบสนามกอล์ฟที่นี่มากครับ", phonetic:"Chop sanam golf tee-nee mak krap/ka", category:"social"},
+  // Social
+  {english:"Hello, my name is [name]", thai:"สวัสดีครับ ฉันชื่อ...", phonetic:"Sawatdee krap/ka. Pom/chan chue...", category:"social", audio:"so1.mp3"},
+  {english:"What is your name?", thai:"คุณชื่ออะไรครับ?", phonetic:"Khun chue a-rai krap/ka?", category:"social", audio:"so2.mp3"},
+  {english:"How are you?", thai:"สบายดีไหมครับ?", phonetic:"Sabai dee mai krap/ka?", category:"social", audio:"so3.mp3"},
+  {english:"Do you have children?", thai:"มีลูกไหมครับ?", phonetic:"Mee look mai krap/ka?", category:"social", audio:"so4.mp3"},
+  {english:"I really like this golf course", thai:"ชอบสนามกอล์ฟที่นี่มากครับ", phonetic:"Chop sanam golf tee-nee mak krap/ka", category:"social", audio:"so5.mp3"},
 
   // Clubs
-  {english:"Driver", thai:"ไม้หัวหนึ่ง", phonetic:"Mai-hua-nung", category:"clubs"},
-  {english:"Wood 3", thai:"ไม้สาม", phonetic:"Mai-sam", category:"clubs"},
-  {english:"Iron 7", thai:"เหล็กเจ็ด", phonetic:"Lek-jed", category:"clubs"},
-  {english:"Wedge", thai:"เหล็กแก๊ป", phonetic:"Lek-gap", category:"clubs"},
-  {english:"Putter", thai:"ไม้พัตต์", phonetic:"Mai-putt", category:"clubs"},
+  {english:"Driver", thai:"ไม้หัวหนึ่ง", phonetic:"Mai-hua-nung", category:"clubs", audio:"cl1.mp3"},
+  {english:"Iron 7", thai:"เหล็กเจ็ด", phonetic:"Lek-jed", category:"clubs", audio:"cl2.mp3"},
+  {english:"Putter", thai:"ไม้พัตต์", phonetic:"Mai-putt", category:"clubs", audio:"cl3.mp3"},
 
-  // Numbers for clubs
-  {english:"3", thai:"สาม", phonetic:"sam", category:"numbers"},
-  {english:"4", thai:"สี่", phonetic:"see", category:"numbers"},
-  {english:"5", thai:"ห้า", phonetic:"ha", category:"numbers"},
-  {english:"6", thai:"หก", phonetic:"hok", category:"numbers"},
-  {english:"7", thai:"เจ็ด", phonetic:"jed", category:"numbers"},
-  {english:"8", thai:"แปด", phonetic:"paet", category:"numbers"},
-  {english:"9", thai:"เก้า", phonetic:"kao", category:"numbers"},
+  // Numbers
+  {english:"3", thai:"สาม", phonetic:"sam", category:"numbers", audio:"nu1.mp3"},
+  {english:"4", thai:"สี่", phonetic:"see", category:"numbers", audio:"nu2.mp3"},
+  {english:"5", thai:"ห้า", phonetic:"ha", category:"numbers", audio:"nu3.mp3"},
+  {english:"6", thai:"หก", phonetic:"hok", category:"numbers", audio:"nu4.mp3"},
 
   // Caddy Communication
-  {english:"How many yards to the hole?", thai:"กี่หลาถึงหลุมครับ?", phonetic:"Gii lah theung lum krap/ka?", category:"caddy"},
-  {english:"Please take care of the scorecard", thai:"ช่วยถือสกอร์การ์ดให้หน่อยครับ?", phonetic:"Chuay thu score-card hai noy krap/ka", category:"caddy"},
-  {english:"I want iron number...", thai:"ขอเหล็ก...", phonetic:"Kor lek...", category:"caddy"},
-  {english:"I want wood number...", thai:"ขอไม้...", phonetic:"Kor mai...", category:"caddy"},
-  {english:"The ball is in the rough", thai:"ลูกกอล์ฟอยู่ในรัฟ", phonetic:"Look golf yoo nai ruff", category:"caddy"},
-  {english:"Let's look for the ball", thai:"ไปช่วยหาลูกกอล์ฟกันครับ", phonetic:"Pai chuay haa look golf gun krap/ka", category:"caddy"},
-  {english:"The ball is in the trees", thai:"ลูกกอล์ฟอยู่ในต้นไม้", phonetic:"Look golf yoo nai dton mai", category:"caddy"},
-  {english:"The ball is in the water", thai:"ลูกกอล์ฟอยู่ในน้ำ", phonetic:"Look golf yoo nai nam", category:"caddy"},
-  {english:"Thank you!", thai:"ขอบคุณครับ", phonetic:"Khop khun krap/ka!", category:"caddy"},
-  {english:"One beer, please", thai:"ขอเบียร์หนึ่งแก้วครับ", phonetic:"Kor bia neung kaew krap/ka", category:"caddy"}
+  {english:"How many yards to the hole?", thai:"กี่หลาถึงหลุมครับ?", phonetic:"Gii lah theung lum krap/ka?", category:"caddy", audio:"ca1.mp3"},
+  {english:"Please take care of the scorecard", thai:"ช่วยถือสกอร์การ์ดให้หน่อยครับ?", phonetic:"Chuay thu score-card hai noy krap/ka", category:"caddy", audio:"ca2.mp3"},
+  {english:"The ball is in the water", thai:"ลูกกอล์ฟอยู่ในน้ำ", phonetic:"Look golf yoo nai nam", category:"caddy", audio:"ca3.mp3"},
+  {english:"Thank you!", thai:"ขอบคุณครับ", phonetic:"Khop khun krap/ka!", category:"caddy", audio:"ca4.mp3"}
 ];
 
+const results = document.getElementById('results');
 
-  const results = document.getElementById('results');
-
-  function renderCards(list){
-    results.innerHTML='';
-    list.forEach(p=>{
-      const card = document.createElement('div');
-      card.className=`card ${p.category}`;
-      card.innerHTML=`
-        <div class="english">${p.english}</div>
-        <div class="thai-script">${p.thai}</div>
-        <div class="thai-phonetic">${p.phonetic}</div>
-        <button class="tts-button" onclick="speakThai('${p.thai}')">🔊</button>
-      `;
-      results.appendChild(card);
-    });
-  }
-
-  function showCategory(cat, btn){
-    document.querySelectorAll('.category-buttons button').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const filtered = phrases.filter(p=>p.category===cat);
-    renderCards(filtered);
-  }
-
-  // initial render
-  showCategory('clubhouse', document.querySelector('.category-buttons button.active'));
-
-  // search
-  const searchInput = document.getElementById('searchInput');
-  searchInput.addEventListener('keyup', ()=>{
-    const filter = searchInput.value.toLowerCase();
-    const filtered = phrases.filter(p=>{
-      return p.english.toLowerCase().includes(filter) || p.thai.includes(filter) || p.phonetic.toLowerCase().includes(filter);
-    });
-    renderCards(filtered);
+function renderCards(list){
+  results.innerHTML='';
+  list.forEach(p=>{
+    const card = document.createElement('div');
+    card.className=`card ${p.category}`;
+    card.innerHTML=`
+      <div class="english">${p.english}</div>
+      <div class="thai-script">${p.thai}</div>
+      <div class="thai-phonetic">${p.phonetic}</div>
+      <button class="tts-button" onclick="playAudio('${p.audio}')">🔊</button>
+    `;
+    results.appendChild(card);
   });
+}
 
-  // TTS
-  function speakThai(text){
-    if('speechSynthesis' in window){
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang='th-TH';
-      speechSynthesis.speak(utter);
-    } else {
-      alert('Your browser does not support speech synthesis.');
-    }
-  }
+function showCategory(cat, btn){
+  document.querySelectorAll('.category-buttons button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = phrases.filter(p=>p.category===cat);
+  renderCards(filtered);
+}
+
+// initial render
+showCategory('clubhouse', document.querySelector('.category-buttons button.active'));
+
+// search
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('keyup', ()=>{
+  const filter = searchInput.value.toLowerCase();
+  const filtered = phrases.filter(p=>{
+    return p.english.toLowerCase().includes(filter) || 
+           p.thai.includes(filter) || 
+           p.phonetic.toLowerCase().includes(filter);
+  });
+  renderCards(filtered);
+});
+
+// เล่นไฟล์เสียง
+function playAudio(file){
+  const audio = new Audio("audio/" + file);
+  audio.play().catch(err=>{
+    console.warn("ไม่มีไฟล์เสียง: " + file);
+  });
+}
 </script>
 
 </body>
